@@ -1,34 +1,29 @@
-// Etape 2
-let button = document.querySelector("button");
-let para = document.createElement("p");
-let secondes = 10;
-let interval;
-para.textContent = secondes;
-document.querySelector("div").append(para);
+const body = document.body;
+let button = document.createElement("button");
+button.textContent = "Afficher le message !";
+let div = document.createElement("div");
+body.append(div);
+div.append(button);
 
-//Etape 5
-const decompte = () => {
-    secondes--;
-  if(secondes == 0) {
-    stop();
-  }
-  else {
-    para.textContent = secondes;
-  }
-  };
+// let para = document.createElement("p");
+// para.textContent = "meeeerde !";
 
-// Etape 4
+let hidden = true;
+
 const start = () => {
-   interval = setInterval(decompte, 1000);
+  if (hidden) {
+    let para = document.createElement("p");
+    para.textContent = "meeeerde !";
+    div.append(para);
+    button.textContent = "Cacher le message !";
+    hidden = false;
+  } else {
+    document.querySelector("p").remove();
+    button.textContent = "Afficher le message !";
+    hidden = true;
+  }
 };
 
-// Etape 3
 const buttonOnclick = () => button.addEventListener("click", start);
 
 buttonOnclick();
-
-// Etape 6
-const stop=()=>{
-    clearInterval(interval);
-    para.textContent = "Stop !";
-}
